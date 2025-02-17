@@ -1,5 +1,5 @@
 from typing import Any, Dict, List, Tuple
-import lightning.pytorch as pl
+import pytorch_lightning as pl
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset

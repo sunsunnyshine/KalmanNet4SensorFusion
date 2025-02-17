@@ -3,10 +3,11 @@ import os.path as osp
 from typing import Dict
 
 import torch
-from lightning.pytorch import Trainer
-from lightning.pytorch.callbacks import LearningRateMonitor, ModelCheckpoint
-from lightning.pytorch.loggers import WandbLogger
+from pytorch_lightning.trainer import Trainer
+from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
+from pytorch_lightning.loggers import WandbLogger
 from mmengine.config import Config, DictAction
+
 from torch import Tensor
 
 from Net.dataset.track_dataset import TrackDataModule
@@ -22,7 +23,7 @@ def main(args: argparse.ArgumentParser, cfg: Config) -> None:
                                        name=cfg.logger.name)
     cfg.logger.name = save_dir['new_name']
     cfg.dump(osp.join(save_dir['config_dir'], 'config.py'))
-
+    # dataset
     data_module = TrackDataModule(
         cfg, use_transform=cfg.data.transforms.use_transform)
     data_module.setup()

@@ -4,11 +4,11 @@ import os
 import os.path as osp
 from typing import Any, Dict, List, Optional
 
-import lightning.pytorch as pl
+import pytorch_lightning as pl
 import pandas as pd
 import torch
 import torch.nn as nn
-from lightning.pytorch.utilities import grad_norm
+from pytorch_lightning.utilities import grad_norm
 from torch import Tensor, optim
 from torch.optim.lr_scheduler import CosineAnnealingLR
 
@@ -245,7 +245,7 @@ class BaseFilterNet(pl.LightningModule):
         else:
             return {'optimizer': optimizer}
 
-    def on_before_optimizer_step(self, optimizer):
+    def on_before_optimizer_step(self, optimizer, optimizer_idx):
         # inspect (unscaled) gradients here
         self.log_dict(grad_norm(self, norm_type=2))
 

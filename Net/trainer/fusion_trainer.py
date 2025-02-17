@@ -6,8 +6,8 @@ from typing import Any, Dict, List, Optional
 
 import torch
 import torch.nn as nn
-from lightning.pytorch.utilities import grad_norm
-from lightning.pytorch.utilities.types import STEP_OUTPUT
+from pytorch_lightning.utilities import grad_norm
+from pytorch_lightning.utilities.types import STEP_OUTPUT
 from torch import Tensor, optim
 from torch.optim.lr_scheduler import CosineAnnealingLR
 
